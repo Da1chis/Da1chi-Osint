@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --bg: #040407;
+  --bg2: #080810;
+  --bg3: #0d0d18;
+  --panel: #10101c;
+  --panel2: #16162a;
+  --border: #1e1e38;
+  --border2: #2d2d52;
+  --accent: #00d4ff;
+  --accent2: #7b2fff;
+  --accent3: #ff2f7b;
+  --text: #e2e2f0;
+  --text2: #8888aa;
+  --text3: #44445a;
+  --success: #00ff9d;
+  --warn: #ffb800;
+  --danger: #ff3b5c;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Atmospheric background */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(123,47,255,0.1) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 85%, rgba(0,212,255,0.07) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 50%, rgba(255,47,123,0.03) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+
+/* Scanline grid */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none; z-index: 0;
+}
+
+#__next { position: relative; z-index: 1; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+@keyframes scanH {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,212,255,0); }
+  50% { box-shadow: 0 0 20px 2px rgba(0,212,255,0.25); }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
